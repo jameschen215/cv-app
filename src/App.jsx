@@ -1,9 +1,15 @@
-import './App.css';
+import './styles/App.css';
+
+import Nav from './components/nav';
+import LandingPage from './components/landing-page';
+import Footer from './components/footer';
 
 export default function App() {
 	return (
-		<>
-			<h1>CV Generator</h1>
-		</>
+		<div className="app">
+			<Nav />
+			<LandingPage />
+			<Footer />
+		</div>
 	);
 }

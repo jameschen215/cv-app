@@ -1,0 +1,117 @@
+.landing-page {
+	width: 100%;
+	max-width: 1024px;
+	min-height: 100%;
+	/* border: 1px solid #000; */
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	flex: 1;
+	position: relative;
+
+	padding: 20px;
+}
+
+.header {
+	max-width: 50%;
+	height: 400px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+
+	/* background-color: green; */
+	z-index: 1;
+}
+
+.header h1 {
+	font-size: 4.4rem;
+
+	font-family: 'Playfair Display', serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.header p {
+	margin-top: 30px;
+	margin-bottom: 48px;
+	font-size: 2rem;
+	color: var(--secondary);
+}
+
+.header button {
+	min-width: 240px;
+	max-width: 50%;
+	padding: 12px 20px;
+	border-radius: 6px;
+
+	border: none;
+	background-color: var(--primary);
+	color: var(--white);
+	font-size: 1.8rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	cursor: pointer;
+	box-shadow: 4px 4px 8px var(--small-shadow);
+	transition: transform 200ms ease;
+}
+
+.header button:hover {
+	transform: translateY(-4px);
+}
+
+.header button:active {
+	transform: translateY(1px);
+}
+
+.example {
+	width: 300px;
+	height: auto;
+	overflow: hidden;
+	border-radius: 8px;
+	box-shadow: 2px 2px 4px var(--medium-shadow);
+
+	z-index: 1;
+}
+
+@media screen and (max-width: 672px) {
+	.header h1 {
+		font-size: 2.8rem;
+	}
+
+	.header p {
+		font-size: 1.6rem;
+	}
+
+	.header button {
+		max-width: 100%;
+		font-size: 1.6rem;
+	}
+}
+
+@media screen and (max-width: 896px) {
+	.landing-page {
+		height: auto;
+		flex-direction: column;
+		align-items: center;
+		gap: 64px;
+	}
+
+	.header {
+		max-width: 75%;
+		height: auto;
+		align-items: center;
+		margin-top: 20px;
+	}
+
+	.header h1 {
+		text-align: center;
+	}
+
+	.example {
+		width: 100%;
+		max-width: 300px;
+	}
+}

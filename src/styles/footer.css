@@ -1,0 +1,30 @@
+footer {
+	margin-top: auto;
+	width: 100%;
+	height: 56px;
+	font-size: 1.4rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* border: 1px solid #000; */
+}
+
+footer a {
+	color: inherit;
+	text-decoration: none;
+	font-weight: 500;
+	border-bottom: 1px solid transparent;
+
+	transition: border-color 200ms ease;
+}
+
+footer a:hover {
+	border-color: var(--border-color);
+}
+
+@media screen and (max-width: 672px) {
+	footer {
+		font-size: 1.2rem;
+	}
+}

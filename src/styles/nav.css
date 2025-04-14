@@ -15,8 +15,10 @@ nav {
 	z-index: 1;
 }
 
-.brand {
+nav a {
 	font-weight: 500;
 	font-size: 1.8rem;
 	text-transform: uppercase;
+	color: var(--white);
+	text-decoration: none;
 }

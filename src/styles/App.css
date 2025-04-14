@@ -1,5 +1,7 @@
 :root {
 	--primary: hsl(200deg 50% 30%);
+	--primary: hsl(190, 100%, 23%);
+	--button: hsl(39, 100%, 47%);
 	--secondary: hsl(0deg 0% 30%);
 	--main-bgc: hsl(0deg 0% 98%);
 	--white: hsl(0deg 0% 99%);

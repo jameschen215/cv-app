@@ -3,7 +3,9 @@ import '../styles/nav.css';
 export default function Nav() {
 	return (
 		<nav>
-			<div className="brand">CV Application</div>
+			<a href="#">
+				<span className="brand">CV Application</span>
+			</a>
 		</nav>
 	);
 }

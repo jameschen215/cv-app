@@ -1,0 +1,66 @@
+.header-title {
+	/* max-width: 50%; */
+	/* height: 400px; */
+
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+
+	z-index: 1;
+
+	max-width: 100%;
+	height: auto;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.header-title.center {
+	height: auto;
+	text-align: center;
+	max-width: 100%;
+}
+
+.header-title h1 {
+	font-size: 3rem;
+	line-height: 1.2;
+	font-family: 'Playfair Display', serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	font-style: normal;
+
+	text-align: center;
+}
+
+.header-title p {
+	margin-top: 30px;
+	margin-bottom: 40px;
+	font-size: 1.6rem;
+	text-align: center;
+	width: 100%;
+	color: var(--secondary);
+}
+
+.header-title button {
+	padding: 12px 24px;
+	border-radius: 6px;
+
+	border: none;
+	background-color: var(--primary);
+	background-color: var(--yellow);
+	color: var(--white);
+	text-shadow: 2px 2px 2px var(--medium-shadow);
+	font-size: 1.6rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	cursor: pointer;
+	box-shadow: 4px 4px 8px var(--medium-shadow);
+	transition: transform 200ms ease;
+}
+
+.header-title button:hover {
+	transform: translateY(-4px);
+}
+
+.header-title button:active {
+	transform: translateY(1px);
+}

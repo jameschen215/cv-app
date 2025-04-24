@@ -1,0 +1,81 @@
+.accordion {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+/* Style the trigger */
+.accordionTrigger {
+	width: 100%;
+	border-radius: 4px;
+	border: 1px solid var(--border-color-light);
+	background: var(--white);
+	padding: 16px 12px;
+
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	cursor: pointer;
+}
+
+.accordionTitle {
+	text-transform: capitalize;
+	font-size: 1.8rem;
+	font-weight: 500;
+}
+
+.requiredSymbol {
+	color: var(--secondary);
+	font-size: 1.4rem;
+	font-style: italic;
+	align-self: last baseline;
+	margin-bottom: 1px;
+}
+
+.accordionTitle,
+.accordionTrigger .icon {
+	color: var(--primary);
+}
+
+.accordionItem.open .accordionTrigger {
+	border-radius: 4px 4px 0 0;
+}
+
+.accordionStateIcon {
+	margin-left: auto;
+	transition: transform 250ms ease;
+	transform-origin: center;
+}
+
+.accordionItem.open .accordionStateIcon {
+	transform: scaleY(-1);
+}
+
+/* Style the content */
+.accordionContent {
+	overflow: hidden;
+	background-color: var(--white);
+	border-radius: 0 0 4px 4px;
+	transform-origin: top;
+	max-height: 0;
+}
+
+.accordionContent.open {
+	overflow: visible;
+	max-height: 1000px;
+	padding: 20px;
+	border: 1px solid var(--border-color-light);
+	border-top: none;
+	animation: expand 250ms ease-in-out forwards;
+}
+
+@keyframes expand {
+	from {
+		max-height: 0;
+	}
+	to {
+		max-height: 1000px;
+	}
+}

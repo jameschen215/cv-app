@@ -1,0 +1,65 @@
+.dataDisplay {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.dataGroup {
+	width: 100%;
+	display: flex;
+	align-items: start;
+	justify-content: space-between;
+	padding: 10px;
+	border: 1px solid var(--border-color-light);
+	border-radius: 4px;
+}
+
+.dataDisplay .data {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.dataDisplay .button {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 0;
+	margin: 0;
+	border: none;
+	background-color: transparent;
+	color: var(--primary);
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.dataDisplay .icon {
+	width: 18px;
+	height: 18px;
+	display: flex;
+	align-items: center;
+}
+
+.dataDisplay .button.deleteButton {
+	font-weight: 400;
+	margin-top: 4px;
+}
+
+.dataDisplay .button.addButton {
+	display: block;
+	padding: 8px 12px;
+	max-width: 450px;
+	width: 100%;
+	background-color: transparent;
+	border: 1px solid var(--green);
+	border-radius: 4px;
+	color: var(--green);
+	font-weight: 500;
+	cursor: pointer;
+
+	transition: color 250ms ease, background-color 250ms ease;
+}
+
+.dataDisplay .button.addButton:hover {
+	background-color: var(--green);
+	color: var(--white);
+}

@@ -31,14 +31,14 @@ export const ACCORDION_ITEMS = [
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'firstName',
+				name: 'first-name',
 				label: 'First Name',
 				type: 'text',
 				placeholder: 'John',
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'lastName',
+				name: 'last-name',
 				label: 'Last Name',
 				type: 'text',
 				placeholder: 'Doe',
@@ -59,7 +59,7 @@ export const ACCORDION_ITEMS = [
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'phoneNumber',
+				name: 'phone-number',
 				label: 'Phone',
 				type: 'tel',
 				placeholder: '+86 123 4567 8900',
@@ -94,13 +94,13 @@ export const ACCORDION_ITEMS = [
 		content: [
 			{
 				id: crypto.randomUUID(),
-				name: 'jobTitle',
+				name: 'job-title',
 				label: 'Job title',
 				type: 'text',
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'jobType',
+				name: 'job-type',
 				label: 'Job Type',
 				type: 'radio',
 				options: [
@@ -116,19 +116,19 @@ export const ACCORDION_ITEMS = [
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'employerAddress',
+				name: 'employer-address',
 				label: 'City',
 				type: 'text',
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'startDate',
+				name: 'start-date',
 				label: 'Start Date',
 				type: 'date',
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'endDate',
+				name: 'end-date',
 				label: 'End Date',
 				type: 'date',
 			},
@@ -165,7 +165,7 @@ export const ACCORDION_ITEMS = [
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'completionDate',
+				name: 'completion-date',
 				label: 'Date of Completion',
 				type: 'date',
 			},

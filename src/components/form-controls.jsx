@@ -1,3 +1,5 @@
+import '../styles/form-controls.css';
+
 export function TextArea({ field, value, handleChange, required }) {
 	const { name, label, placeholder } = field;
 
@@ -108,12 +110,20 @@ export function FileInput({ filename, handleChange }) {
 			<input
 				type="file"
 				id="fileInput"
-				className="fileInput"
 				accept="image/*"
 				onChange={handleChange}
 			/>
-			<span className="">Photo</span>
-			<label htmlFor="fileInput" className="fileLabel">
+			<span>Photo</span>
+			<label
+				htmlFor="fileInput"
+				className="fileLabel"
+				tabIndex={0}
+				role="button"
+				onKeyDown={(ev) => {
+					if (ev.key === 'Enter') {
+						document.getElementById('fileInput')?.click();
+					}
+				}}>
 				<span className="fileButton">Choose File</span>
 				<span className="fileName">{filename}</span>
 			</label>

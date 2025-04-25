@@ -3,6 +3,7 @@
 	--primary: hsl(190, 100%, 23%);
 	--yellow: hsl(39, 100%, 47%);
 	--green: hsl(100deg, 100%, 35%);
+	--red: hsl(0deg, 90%, 48%);
 	--secondary: hsl(0deg 0% 30%);
 	--main-bgc: hsl(0deg 0% 97%);
 	--white: hsl(0deg 0% 100%);
@@ -39,15 +40,24 @@ progress {
 	accent-color: var(--accent-color);
 }
 
-button,
-a {
-	outline: none;
-}
-
+/* Form controls focus style */
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+progress:focus-visible,
+.fileLabel:focus-visible {
 	outline: 2px solid var(--outline-color);
 	outline-offset: 2px;
+}
+
+/* Form controls unfocus style */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+progress:focus:not(:focus-visible) {
+	outline: none;
 }
 
 .app {
@@ -67,4 +77,5 @@ button:focus-visible {
 	overflow: hidden;
 	clip: rect(0, 0, 0, 0);
 	border: 0;
+	white-space: nowrap;
 }

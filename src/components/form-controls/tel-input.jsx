@@ -1,19 +1,24 @@
 import { useState } from 'react';
 import { validateTel } from '../../helper/validation';
 
-export function TelInput({
+export default function TelInput({
 	field: { name, label, placeholder },
 	value,
 	onChange,
 	required,
 	errors,
 	setErrors,
+	allTouched,
 }) {
 	const [touched, setTouched] = useState(false);
-	const classNames = touched ? (errors[name] ? 'invalid' : 'valid') : '';
+
+	let classNames = '';
+	if (allTouched || touched) {
+		classNames = errors[name] ? 'invalid' : 'valid';
+	}
 
 	function handleChange(ev) {
-		let error = validateTel(ev.target.name, ev.target.value);
+		let error = validateTel(ev.target.value);
 
 		// If input isn't touched, don't display error colors
 		setTouched(true);
@@ -28,10 +33,10 @@ export function TelInput({
 
 	return (
 		<>
-			<label htmlFor={name} className="fieldLabel">
+			<label htmlFor={name} className="field-label">
 				{label}{' '}
 				{required && (
-					<span className="fieldStar" aria-hidden="true">
+					<span className="field-star" aria-hidden="true">
 						*
 					</span>
 				)}
@@ -45,21 +50,27 @@ export function TelInput({
 				placeholder={placeholder}
 				value={value}
 				onChange={handleChange}
-				required={required}
+				// required={required}
 				aria-required={required}
-				pattern="^\+?[0-9]{7,15}$"
+				// pattern="^\+?[0-9]{7,15}$"
 				title="Please enter a valid phone number with 7 to 15 digits. You can start with a + for the country code."
 				aria-invalid={!!errors[name]}
-				aria-describedby={`${name}ErrorMessage`}
+				aria-describedby={`${name}-error-message ${name}-hint`}
 			/>
 
 			{errors[name] && (
-				<div
-					className="errorMessage"
-					id={`${name}ErrorMessage`}
-					aria-live="polite">
-					{errors[name]}
-				</div>
+				<>
+					<div
+						className="error-message"
+						id={`${name}-error-message`}
+						aria-live="polite">
+						{errors[name]}
+					</div>
+					<div id={`${name}-hint`} className="form-hint">
+						Please enter a valid phone number with 7 to 15 digits. You can start
+						with a + for the country code.
+					</div>
+				</>
 			)}
 		</>
 	);

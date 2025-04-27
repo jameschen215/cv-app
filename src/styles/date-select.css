@@ -1,0 +1,55 @@
+.date-select-wrapper {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.select-wrapper {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+select,
+::picker(select) {
+	appearance: base-select;
+	/* font: -webkit-small-control; */
+}
+
+select {
+	padding: 8px 12px;
+	border-radius: 4px;
+	border: 1px solid var(--border-color-light);
+	text-align: center;
+}
+
+::picker(select) {
+	border: 1px solid var(--border-color-light);
+	border-top: 1px solid transparent;
+	margin-top: -4px;
+	padding: 0;
+	box-shadow: none;
+	background: var(--white);
+}
+
+option {
+	color: var(--secondary);
+	padding: 12px 24px 12px 40px;
+	text-align: center;
+	letter-spacing: 0.25px;
+}
+
+select::picker-icon {
+	transform: scaleY(0.65);
+	color: var(--secondary);
+}
+
+option:checked {
+	background: #d0edd0;
+	color: black;
+}
+
+option::checkmark {
+	/*  */
+}

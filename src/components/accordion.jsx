@@ -10,7 +10,7 @@ import DataDisplay from './data-display';
 import { useData, useDispatch } from '../context/hooks';
 
 export default function Accordion() {
-	const [openIndex, setOpenIndex] = useState(null);
+	const [openIndex, setOpenIndex] = useState(0);
 
 	function toggleItem(index) {
 		setOpenIndex((prev) => (prev === index ? null : index));
@@ -118,6 +118,7 @@ function AccordionContent({ isOpen, item }) {
 				<FormComponent
 					mode="add"
 					required={item.required}
+					title={item.title}
 					formFields={item.content}
 					onSubmit={handleSubmit}
 				/>
@@ -125,6 +126,7 @@ function AccordionContent({ isOpen, item }) {
 				<FormComponent
 					mode="edit"
 					required={item.required}
+					title={item.title}
 					data={editEntry || data[item.title]}
 					formFields={item.content}
 					onSubmit={handleSubmit}

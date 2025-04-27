@@ -90,7 +90,7 @@ export const ACCORDION_ITEMS = [
 	{
 		id: crypto.randomUUID(),
 		title: 'Work Experiences',
-		addable: true,
+		required: false,
 		content: [
 			{
 				id: crypto.randomUUID(),
@@ -143,7 +143,7 @@ export const ACCORDION_ITEMS = [
 	{
 		id: crypto.randomUUID(),
 		title: 'Education',
-		addable: true,
+		required: false,
 		content: [
 			{
 				id: crypto.randomUUID(),
@@ -153,8 +153,8 @@ export const ACCORDION_ITEMS = [
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'qualifications',
-				label: 'Qualifications',
+				name: 'qualification',
+				label: 'Qualification',
 				type: 'text',
 			},
 			{
@@ -174,12 +174,12 @@ export const ACCORDION_ITEMS = [
 	{
 		id: crypto.randomUUID(),
 		title: 'Skills',
-		addable: true,
+		required: false,
 		content: [
 			{
 				id: crypto.randomUUID(),
-				name: 'skills',
-				label: 'Skills',
+				name: 'skill',
+				label: 'Skill',
 				type: 'text',
 			},
 			{
@@ -190,4 +190,19 @@ export const ACCORDION_ITEMS = [
 			},
 		],
 	},
+];
+
+export const MONTHS = [
+	'January',
+	'February',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December',
 ];

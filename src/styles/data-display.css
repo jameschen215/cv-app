@@ -17,6 +17,12 @@
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
+
+	color: var(--secondary);
+}
+
+.dataDisplay .data h3 {
+	color: var(--black);
 }
 
 .dataDisplay .button {

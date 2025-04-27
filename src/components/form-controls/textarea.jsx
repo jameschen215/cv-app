@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { validateEmail } from '../../helper/validation';
+import { validateText } from '../../helper/validation';
 
-export default function EmailInput({
+export default function TextArea({
 	field: { name, label, placeholder },
 	value,
-	onChange,
-	required,
 	errors,
 	setErrors,
+	onChange,
+	required,
 	allTouched,
 }) {
 	const [touched, setTouched] = useState(false);
@@ -18,9 +18,8 @@ export default function EmailInput({
 	}
 
 	function handleChange(ev) {
-		let error = validateEmail(ev.target.value);
+		let error = validateText(ev.target.name, ev.target.value);
 
-		// If input isn't touched, don't display error colors
 		setTouched(true);
 
 		setErrors((prev) => ({
@@ -36,39 +35,33 @@ export default function EmailInput({
 			<label htmlFor={name} className="field-label">
 				{label}{' '}
 				{required && (
-					<span className="field-star" aria-hidden="true">
+					<span className="field-star" aria-hidden={true}>
 						*
 					</span>
 				)}
 			</label>
 
-			<input
+			<textarea
+				name={name}
 				id={name}
 				className={classNames}
-				name={name}
-				type="email"
-				placeholder={placeholder}
 				value={value}
-				onChange={handleChange}
+				placeholder={placeholder}
+				title="Please enter your professional profile."
 				// required={required}
 				aria-required={required}
-				title="Please enter a valid email address (e.g., name@example.com)."
 				aria-invalid={!!errors[name]}
 				aria-describedby={`${name}-error-message`}
-			/>
+				onChange={handleChange}></textarea>
 
+			{/* error message */}
 			{errors[name] && (
-				<>
-					<div
-						className="error-message"
-						id={`${name}-error-message`}
-						aria-live="polite">
-						{errors[name]}
-					</div>
-					<div id={`${name}-hint`} className="form-hint">
-						Please enter a valid email address (e.g., name@example.com).
-					</div>
-				</>
+				<div
+					id={`${name}-error-message`}
+					className="error-message"
+					aria-live="polite">
+					{errors[name]}
+				</div>
 			)}
 		</>
 	);

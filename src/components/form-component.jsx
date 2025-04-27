@@ -1,32 +1,40 @@
 import '../styles/form-component.css';
+import '../styles/form-controls.css';
 
 import { useState } from 'react';
 
-import {
-	FileInput,
-	TextArea,
-	CheckboxInput,
-	RadioInput,
-	RangeInput,
-	Input,
-} from './form-controls';
+import TextInput from './form-controls/text-input';
+import EmailInput from './form-controls/email-input';
+import TelInput from './form-controls/tel-input';
+import TextArea from './form-controls/textarea';
+import FileInput from './form-controls/file-input';
+import CheckboxInput from './form-controls/checkbox-input';
+import RadioInput from './form-controls/radio-input';
+import RangeInput from './form-controls/range-input';
+import DateSelect from './form-controls/date-select';
 
-import { TextInput } from './form-controls/text-input';
-import { EmailInput } from './form-controls/email-input';
-import { TelInput } from './form-controls/tel-input';
+import { validateForm } from '../helper/validation';
 
 export default function FormComponent({
 	mode = 'add',
 	required,
+	title,
 	formFields = [],
 	data = {},
 	onSubmit,
 }) {
-	const defaultValues = Object.fromEntries(formFields.map((f) => [f.name, '']));
+	const defaultValues = Object.fromEntries(
+		formFields.map((f) =>
+			// If you don't change the slider, formData can't get the value of the
+			// slider from handleChange handler. So, add it manually.
+			f.name === 'proficiency' ? [f.name, 50] : [f.name, '']
+		)
+	);
 	const initialValues = mode === 'add' ? defaultValues : data;
 
 	const [formData, setFormData] = useState(initialValues);
-	const [fromErrors, setFormErrors] = useState(initialValues);
+	const [formErrors, setFormErrors] = useState({});
+	const [allTouched, setAllTouched] = useState(false);
 
 	const disableEndDate = formData.present;
 
@@ -43,10 +51,19 @@ export default function FormComponent({
 				}));
 			}
 		} else if (inputType === 'checkbox') {
+			const { name, checked } = ev.target;
 			setFormData((prev) => ({
 				...prev,
-				[ev.target.name]: ev.target.checked,
+				[name]: checked,
 			}));
+
+			// If present, disable end state and end state error messages
+			if (checked) {
+				formData['end-date-month'] = '';
+				formData['end-date-month'] = '';
+				formErrors['end-date-month'] = null;
+				formErrors['end-date-year'] = null;
+			}
 		} else {
 			setFormData((prev) => ({
 				...prev,
@@ -58,36 +75,31 @@ export default function FormComponent({
 	function handleSubmit(ev) {
 		ev.preventDefault();
 
-		// If you don't change the slider, formData can't get the value of the
-		// slider from handleChange handler. So, add it manually.
-		if (!formData.proficiency) formData.proficiency = 50;
+		setAllTouched(true);
 
-		console.log({ fromErrors });
+		const newErrors = validateForm(title, formData, setFormErrors);
+		const firstError = Object.keys(newErrors).find((key) => newErrors[key]);
+		setFormErrors(newErrors);
 
-		if (validateForm()) {
-			console.log('Form data is valid', formData);
+		console.log(formErrors);
+		if (firstError) {
+			const firstErrorDom = document.getElementById(firstError);
+
+			if (firstErrorDom) {
+				firstErrorDom.focus();
+				firstErrorDom.scrollIntoView({
+					behavior: 'smooth',
+					block: 'center',
+				});
+			}
+
+			console.log('Form submission failed due to validation errors.');
+		} else {
 			onSubmit(formData);
+			console.log('Form submitted successfully!');
+			setAllTouched(false);
+			setFormErrors({});
 		}
-	}
-
-	// Validate the form before submitting
-	function validateForm() {
-		let isValid = true;
-		const errors = {};
-
-		if (!formData.firstName) {
-			isValid = false;
-			errors.firstName = 'First name cannot be empty.';
-		} else if (formData.firstName.length < 2) {
-			isValid = false;
-			errors.firstName = 'Too short.';
-		} else if (formData.firstName.length > 20) {
-			isValid = false;
-			errors.firstName = 'Too long.';
-		}
-
-		setFormErrors(errors);
-		return isValid;
 	}
 
 	return (
@@ -108,8 +120,11 @@ export default function FormComponent({
 							<TextArea
 								field={field}
 								value={formData[name] || ''}
-								handleChange={handleChange}
+								errors={formErrors}
+								setErrors={setFormErrors}
+								onChange={handleChange}
 								required={required}
+								allTouched={allTouched}
 							/>
 						)}
 						{type === 'radio' && (
@@ -123,6 +138,7 @@ export default function FormComponent({
 							<CheckboxInput
 								name={name}
 								label={label}
+								// value={formData[name] || ''}
 								handleChange={handleChange}
 							/>
 						)}
@@ -141,8 +157,9 @@ export default function FormComponent({
 								value={formData[name] || ''}
 								required={required}
 								onChange={handleChange}
-								errors={fromErrors}
+								errors={formErrors}
 								setErrors={setFormErrors}
+								allTouched={allTouched}
 							/>
 						)}
 						{type === 'email' && (
@@ -151,8 +168,9 @@ export default function FormComponent({
 								value={formData[name] || ''}
 								required={required}
 								onChange={handleChange}
-								errors={fromErrors}
+								errors={formErrors}
 								setErrors={setFormErrors}
+								allTouched={allTouched}
 							/>
 						)}
 						{type === 'tel' && (
@@ -161,18 +179,18 @@ export default function FormComponent({
 								value={formData[name] || ''}
 								required={required}
 								onChange={handleChange}
-								errors={fromErrors}
+								errors={formErrors}
 								setErrors={setFormErrors}
+								allTouched={allTouched}
 							/>
 						)}
 						{type === 'date' && (
-							<Input
-								// data={data[name] || null}
+							<DateSelect
 								field={field}
-								value={formData[name] || ''}
-								handleChange={handleChange}
-								// required={required}
+								value={formData}
 								disableEndDate={disableEndDate}
+								errors={formErrors}
+								handleChange={handleChange}
 							/>
 						)}
 					</div>

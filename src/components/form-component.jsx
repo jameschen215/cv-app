@@ -17,7 +17,6 @@ import { validateForm } from '../helper/validation';
 
 export default function FormComponent({
 	mode = 'add',
-	// required,
 	title,
 	formFields = [],
 	data = {},
@@ -39,37 +38,38 @@ export default function FormComponent({
 
 	const disableEndDate = formData.present;
 
-	function handleChange(ev) {
-		const inputType = ev.target.type;
+	function handleFileChange(file) {
+		setFormData((prev) => ({
+			...prev,
+			photo: file,
+		}));
+	}
 
-		if (inputType === 'file') {
-			const file = ev.target.files[0];
+	function handleInputChange(name, value) {
+		setFormData((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+	}
 
-			if (file) {
-				setFormData((prev) => ({
-					...prev,
-					photo: file,
-				}));
-			}
-		} else if (inputType === 'checkbox') {
-			const { name, checked } = ev.target;
-			setFormData((prev) => ({
-				...prev,
-				[name]: checked,
-			}));
-
+	function handleCheckboxChange(name, checked) {
+		setFormData((prev) => ({
+			...prev,
+			[name]: checked,
 			// If present, disable end state and end state error messages
-			if (checked) {
-				formData['end-date-month'] = '';
-				formData['end-date-month'] = '';
-				formErrors['end-date-month'] = null;
-				formErrors['end-date-year'] = null;
-			}
+			...(checked ? { 'end-date-month': '', 'end-date-year': '' } : {}),
+		}));
+	}
+
+	function handleChange(ev) {
+		const { type, name, checked, value, files } = ev.target;
+
+		if (type === 'file') {
+			handleFileChange(files[0]);
+		} else if (type === 'checkbox') {
+			handleCheckboxChange(name, checked);
 		} else {
-			setFormData((prev) => ({
-				...prev,
-				[ev.target.name]: ev.target.value,
-			}));
+			handleInputChange(name, value);
 		}
 	}
 
@@ -82,7 +82,6 @@ export default function FormComponent({
 		const firstError = Object.keys(newErrors).find((key) => newErrors[key]);
 		setFormErrors(newErrors);
 
-		console.log(formErrors);
 		if (firstError) {
 			const firstErrorDom = document.getElementById(firstError);
 
@@ -199,9 +198,7 @@ export default function FormComponent({
 
 			<div className="formRow">
 				{title.startsWith('Personal') || (
-					<button
-						type="button"
-						onClick={(prev) => onCancel({ ...prev, mode: 'showing' })}>
+					<button type="button" onClick={() => onCancel()}>
 						Cancel
 					</button>
 				)}

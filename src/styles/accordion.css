@@ -6,7 +6,7 @@
 }
 
 /* Style the trigger */
-.accordionTrigger {
+.accordion-trigger {
 	width: 100%;
 	border-radius: 4px;
 	border: 1px solid var(--border-color-light);
@@ -20,13 +20,13 @@
 	cursor: pointer;
 }
 
-.accordionTitle {
+.accordion-title {
 	text-transform: capitalize;
 	font-size: 1.8rem;
 	font-weight: 500;
 }
 
-.requiredSymbol {
+.required-symbol {
 	color: var(--secondary);
 	font-size: 1.4rem;
 	font-style: italic;
@@ -34,27 +34,27 @@
 	margin-bottom: 1px;
 }
 
-.accordionTitle,
-.accordionTrigger .icon {
+.accordion-title,
+.accordion-trigger .icon {
 	color: var(--primary);
 }
 
-.accordionItem.open .accordionTrigger {
+.accordion-item.open .accordion-trigger {
 	border-radius: 4px 4px 0 0;
 }
 
-.accordionStateIcon {
+.accordion-state-icon {
 	margin-left: auto;
 	transition: transform 250ms ease;
 	transform-origin: center;
 }
 
-.accordionItem.open .accordionStateIcon {
+.accordion-item.open .accordion-state-icon {
 	transform: scaleY(-1);
 }
 
 /* Style the content */
-.accordionContent {
+.accordion-content {
 	overflow: hidden;
 	background-color: var(--white);
 	border-radius: 0 0 4px 4px;
@@ -62,7 +62,7 @@
 	max-height: 0;
 }
 
-.accordionContent.open {
+.accordion-content.open {
 	overflow: visible;
 	max-height: 1000px;
 	padding: 20px;
@@ -71,7 +71,7 @@
 	animation: expand 250ms ease-in-out forwards;
 }
 
-.accordionContent .button.addButton {
+.accordion-content .button.add-button {
 	display: block;
 	padding: 8px 12px;
 	max-width: 450px;
@@ -87,7 +87,7 @@
 	transition: color 250ms ease, background-color 250ms ease;
 }
 
-.accordionContent .button.addButton:hover {
+.accordion-content .button.add-button:hover {
 	background-color: var(--green);
 	color: var(--white);
 }

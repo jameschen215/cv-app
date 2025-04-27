@@ -1,8 +1,10 @@
 import '../styles/cv-factory.css';
 
-import Accordion from './accordion';
-import Header from './header';
+import { ACCORDION_ITEMS } from '../helper/constants';
+
 import { DataProvider } from '../context/data-provider';
+import Header from './header';
+import Accordion from './accordion/accordion';
 
 export default function CVFactory() {
 	return (
@@ -11,7 +13,7 @@ export default function CVFactory() {
 				<Header isFactory={true} />
 
 				<main className="main">
-					<Accordion />
+					<Accordion items={ACCORDION_ITEMS} />
 					<button className="cv-preview">CV Preview</button>
 				</main>
 			</div>

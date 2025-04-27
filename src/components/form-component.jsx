@@ -138,6 +138,7 @@ export default function FormComponent({
 							<CheckboxInput
 								name={name}
 								label={label}
+								checked={formData[name] || false}
 								handleChange={handleChange}
 							/>
 						)}

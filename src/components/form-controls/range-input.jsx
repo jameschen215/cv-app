@@ -3,8 +3,7 @@ import '../../styles/range-input.css';
 export default function RangeInput({ name, label, value, handleChange }) {
 	return (
 		<>
-			<label className="label range-inputLabel">{label}</label>
-
+			<label className="label range-input-label">{label}</label>
 			<input
 				className="slider"
 				type="range"
@@ -14,8 +13,12 @@ export default function RangeInput({ name, label, value, handleChange }) {
 				value={value}
 				step="5"
 				onChange={handleChange}
-				aria-required={true}
+				aria-required="true"
+				aria-valuenow={value}
+				aria-valuemin="0"
+				aria-valuemax="100"
 			/>
+			<span>{value}</span>
 		</>
 	);
 }

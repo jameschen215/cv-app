@@ -5,7 +5,6 @@ export default function TelInput({
 	field: { name, label, placeholder },
 	value,
 	onChange,
-	// required,
 	errors,
 	setErrors,
 	allTouched,
@@ -50,7 +49,7 @@ export default function TelInput({
 				placeholder={placeholder}
 				value={value}
 				onChange={handleChange}
-				aria-required={true}
+				aria-required="true"
 				title="Please enter a valid phone number with 7 to 15 digits. You can start with a + for the country code."
 				aria-invalid={!!errors[name]}
 				aria-describedby={`${name}-error-message ${name}-hint`}
@@ -61,7 +60,7 @@ export default function TelInput({
 					<div
 						className="error-message"
 						id={`${name}-error-message`}
-						aria-live="polite">
+						aria-live="assertive">
 						{errors[name]}
 					</div>
 					<div id={`${name}-hint`} className="form-hint">

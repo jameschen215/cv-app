@@ -5,7 +5,6 @@ export default function TextInput({
 	field: { name, label, placeholder },
 	value,
 	onChange,
-	// required,
 	errors,
 	setErrors,
 	allTouched,
@@ -51,9 +50,10 @@ export default function TextInput({
 				placeholder={placeholder}
 				value={value}
 				onChange={handleChange}
-				aria-required={true}
+				aria-required="true"
 				aria-invalid={!!errors[name]}
 				aria-describedby={`${name}-error-message`}
+				autoComplete="on"
 			/>
 
 			{errors[name] && (

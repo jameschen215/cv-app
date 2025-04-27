@@ -6,8 +6,9 @@ export default function FileInput({ filename, handleChange }) {
 				id="file-input"
 				accept="image/*"
 				onChange={handleChange}
+				aria-describedby="file-input-description"
 			/>
-			<span>Photo</span>
+			<span id="file-input-description">Photo</span>
 			<label
 				htmlFor="file-input"
 				className="field-label file-label"
@@ -19,7 +20,7 @@ export default function FileInput({ filename, handleChange }) {
 					}
 				}}>
 				<span className="file-button">Choose File</span>
-				<span className="file-name">{filename}</span>
+				<span className="file-name">{filename || 'No file selected'}</span>
 			</label>
 		</>
 	);

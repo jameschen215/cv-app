@@ -7,7 +7,7 @@ export default function RadioInput({
 }) {
 	return (
 		<>
-			<label className="label radio-inputLabel">
+			<label className="label radio-input-label">
 				{label}{' '}
 				<span className="field-star" aria-hidden="true">
 					*
@@ -23,9 +23,10 @@ export default function RadioInput({
 							value={option.value}
 							checked={value === option.value}
 							onChange={handleChange}
-							aria-required={true}
+							aria-required="true"
+							aria-labelledby={`${name}-label-${index}`}
 						/>
-						{option.label}
+						<span id={`${name}-label-${index}`}>{option.label}</span>
 					</label>
 				))}
 			</div>

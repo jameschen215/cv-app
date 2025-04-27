@@ -42,21 +42,15 @@ export default function DateSelect({
 
 function YearSelect({ name, value, errors, disableEndDate, onChange }) {
 	const currentYear = new Date().getFullYear();
-	// Last 100 years
 	const years = Array.from({ length: 50 }, (_, i) => currentYear - i);
 
-	function handleChange(ev) {
-		// console.log(ev.target.name);
-		// console.log(ev.target.value);
-		onChange(ev);
-	}
 	return (
 		<div className="select-wrapper">
 			<select
 				name={name}
 				id={name}
 				value={value}
-				onChange={handleChange}
+				onChange={onChange}
 				aria-label="Select year"
 				aria-required="true"
 				aria-invalid={!!errors[name]}
@@ -77,7 +71,7 @@ function YearSelect({ name, value, errors, disableEndDate, onChange }) {
 				<div
 					className="error-message"
 					id={`${name}-error-message`}
-					aria-live="polite">
+					aria-live="assertive">
 					{errors[name]}
 				</div>
 			)}
@@ -112,7 +106,7 @@ function MonthSelect({ name, value, errors, disableEndDate, onChange }) {
 				<div
 					className="error-message"
 					id={`${name}-error-message`}
-					aria-live="polite">
+					aria-live="assertive">
 					{errors[name]}
 				</div>
 			)}

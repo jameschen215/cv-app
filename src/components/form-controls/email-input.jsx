@@ -50,7 +50,7 @@ export default function EmailInput({
 				placeholder={placeholder}
 				value={value}
 				onChange={handleChange}
-				aria-required={true}
+				aria-required="true"
 				title="Please enter a valid email address (e.g., name@example.com)."
 				aria-invalid={!!errors[name]}
 				aria-describedby={`${name}-error-message`}
@@ -61,7 +61,7 @@ export default function EmailInput({
 					<div
 						className="error-message"
 						id={`${name}-error-message`}
-						aria-live="polite">
+						aria-live="assertive">
 						{errors[name]}
 					</div>
 					<div id={`${name}-hint`} className="form-hint">

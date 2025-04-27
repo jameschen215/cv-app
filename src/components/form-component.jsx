@@ -17,11 +17,12 @@ import { validateForm } from '../helper/validation';
 
 export default function FormComponent({
 	mode = 'add',
-	required,
+	// required,
 	title,
 	formFields = [],
 	data = {},
 	onSubmit,
+	onCancel,
 }) {
 	const defaultValues = Object.fromEntries(
 		formFields.map((f) =>
@@ -123,7 +124,7 @@ export default function FormComponent({
 								errors={formErrors}
 								setErrors={setFormErrors}
 								onChange={handleChange}
-								required={required}
+								// required={required}
 								allTouched={allTouched}
 							/>
 						)}
@@ -138,7 +139,6 @@ export default function FormComponent({
 							<CheckboxInput
 								name={name}
 								label={label}
-								// value={formData[name] || ''}
 								handleChange={handleChange}
 							/>
 						)}
@@ -155,7 +155,7 @@ export default function FormComponent({
 							<TextInput
 								field={field}
 								value={formData[name] || ''}
-								required={required}
+								// required={required}
 								onChange={handleChange}
 								errors={formErrors}
 								setErrors={setFormErrors}
@@ -166,7 +166,7 @@ export default function FormComponent({
 							<EmailInput
 								field={field}
 								value={formData[name] || ''}
-								required={required}
+								// required={required}
 								onChange={handleChange}
 								errors={formErrors}
 								setErrors={setFormErrors}
@@ -177,7 +177,7 @@ export default function FormComponent({
 							<TelInput
 								field={field}
 								value={formData[name] || ''}
-								required={required}
+								// required={required}
 								onChange={handleChange}
 								errors={formErrors}
 								setErrors={setFormErrors}
@@ -198,6 +198,13 @@ export default function FormComponent({
 			})}
 
 			<div className="formRow">
+				{title.startsWith('Personal') || (
+					<button
+						type="button"
+						onClick={(prev) => onCancel({ ...prev, mode: 'showing' })}>
+						Cancel
+					</button>
+				)}
 				<button type="submit">Submit</button>
 			</div>
 		</form>

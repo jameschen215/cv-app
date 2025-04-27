@@ -7,7 +7,7 @@ export default function TextArea({
 	errors,
 	setErrors,
 	onChange,
-	required,
+	// required,
 	allTouched,
 }) {
 	const [touched, setTouched] = useState(false);
@@ -34,11 +34,11 @@ export default function TextArea({
 		<>
 			<label htmlFor={name} className="field-label">
 				{label}{' '}
-				{required && (
+				{
 					<span className="field-star" aria-hidden={true}>
 						*
 					</span>
-				)}
+				}
 			</label>
 
 			<textarea
@@ -48,8 +48,7 @@ export default function TextArea({
 				value={value}
 				placeholder={placeholder}
 				title="Please enter your professional profile."
-				// required={required}
-				aria-required={required}
+				aria-required={true}
 				aria-invalid={!!errors[name]}
 				aria-describedby={`${name}-error-message`}
 				onChange={handleChange}></textarea>

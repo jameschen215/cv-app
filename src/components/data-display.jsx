@@ -2,7 +2,7 @@ import '../styles/data-display.css';
 
 import { SquarePen, Trash2 } from 'lucide-react';
 
-export default function DataDisplay({ title, data, onClick, onDelete }) {
+export default function DataDisplay({ title, data, onEdit, onDelete }) {
 	return (
 		<div className={`dataDisplay ${title}`}>
 			{title === 'Personal Details' ? (
@@ -20,9 +20,7 @@ export default function DataDisplay({ title, data, onClick, onDelete }) {
 
 					<button
 						className="button editButton"
-						onClick={() =>
-							onClick((prev) => ({ ...prev, mode: 'edit', submitted: false }))
-						}>
+						onClick={() => onEdit((prev) => ({ ...prev, mode: 'editing' }))}>
 						<span className="icon editIcon">
 							<SquarePen strokeWidth={2} />
 						</span>{' '}
@@ -34,9 +32,7 @@ export default function DataDisplay({ title, data, onClick, onDelete }) {
 					<div className="data">{data.profile}</div>
 					<button
 						className="button editButton"
-						onClick={() =>
-							onClick((prev) => ({ ...prev, mode: 'edit', submitted: false }))
-						}>
+						onClick={() => onEdit((prev) => ({ ...prev, mode: 'editing' }))}>
 						<span className="icon editIcon">
 							<SquarePen strokeWidth={2} />
 						</span>{' '}
@@ -45,7 +41,7 @@ export default function DataDisplay({ title, data, onClick, onDelete }) {
 				</div>
 			) : title === 'Work Experiences' ? (
 				<>
-					{data.map((exp) => (
+					{data?.map((exp) => (
 						<div className="dataGroup" key={exp.id}>
 							<div className="data">
 								<h3>{exp['job-title']}</h3>
@@ -71,9 +67,7 @@ export default function DataDisplay({ title, data, onClick, onDelete }) {
 
 							<button
 								className="button editButton"
-								onClick={() =>
-									onClick({ mode: 'edit', submitted: false, editId: exp.id })
-								}>
+								onClick={() => onEdit({ mode: 'editing', editId: exp.id })}>
 								<span className="icon editIcon">
 									<SquarePen strokeWidth={2} />
 								</span>{' '}
@@ -84,7 +78,7 @@ export default function DataDisplay({ title, data, onClick, onDelete }) {
 				</>
 			) : title === 'Education' ? (
 				<>
-					{data.map((edu) => (
+					{data?.map((edu) => (
 						<div className="dataGroup" key={edu.id}>
 							<div className="data">
 								<h3>{edu.school}</h3>
@@ -108,9 +102,7 @@ export default function DataDisplay({ title, data, onClick, onDelete }) {
 
 							<button
 								className="button editButton"
-								onClick={() =>
-									onClick({ mode: 'edit', submitted: false, editId: edu.id })
-								}>
+								onClick={() => onEdit({ mode: 'editing', editId: edu.id })}>
 								<span className="icon editIcon">
 									<SquarePen strokeWidth={2} />
 								</span>{' '}
@@ -121,7 +113,7 @@ export default function DataDisplay({ title, data, onClick, onDelete }) {
 				</>
 			) : (
 				<>
-					{data.map((skill) => (
+					{data?.map((skill) => (
 						<div className="dataGroup" key={skill.id}>
 							<div className="data">
 								<div>
@@ -139,9 +131,7 @@ export default function DataDisplay({ title, data, onClick, onDelete }) {
 
 							<button
 								className="button editButton"
-								onClick={() =>
-									onClick({ mode: 'edit', submitted: false, editId: skill.id })
-								}>
+								onClick={() => onEdit({ mode: 'editing', editId: skill.id })}>
 								<span className="icon editIcon">
 									<SquarePen strokeWidth={2} />
 								</span>{' '}
@@ -150,17 +140,6 @@ export default function DataDisplay({ title, data, onClick, onDelete }) {
 						</div>
 					))}
 				</>
-			)}
-
-			{!title.startsWith('Personal') && (
-				<button
-					className="button addButton"
-					type="button"
-					onClick={(prev) =>
-						onClick({ ...prev, mode: 'add', submitted: false })
-					}>
-					Add more
-				</button>
 			)}
 		</div>
 	);

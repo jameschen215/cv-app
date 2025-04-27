@@ -5,7 +5,7 @@ export default function EmailInput({
 	field: { name, label, placeholder },
 	value,
 	onChange,
-	required,
+	// required,
 	errors,
 	setErrors,
 	allTouched,
@@ -35,11 +35,11 @@ export default function EmailInput({
 		<>
 			<label htmlFor={name} className="field-label">
 				{label}{' '}
-				{required && (
+				{
 					<span className="field-star" aria-hidden="true">
 						*
 					</span>
-				)}
+				}
 			</label>
 
 			<input
@@ -50,8 +50,7 @@ export default function EmailInput({
 				placeholder={placeholder}
 				value={value}
 				onChange={handleChange}
-				// required={required}
-				aria-required={required}
+				aria-required={true}
 				title="Please enter a valid email address (e.g., name@example.com)."
 				aria-invalid={!!errors[name]}
 				aria-describedby={`${name}-error-message`}

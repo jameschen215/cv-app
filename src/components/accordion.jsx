@@ -10,7 +10,7 @@ import DataDisplay from './data-display';
 import { useData, useDispatch } from '../context/hooks';
 
 export default function Accordion() {
-	const [openIndex, setOpenIndex] = useState(0);
+	const [openIndex, setOpenIndex] = useState(null);
 
 	function toggleItem(index) {
 		setOpenIndex((prev) => (prev === index ? null : index));
@@ -55,15 +55,19 @@ function AccordionTrigger({ item, onClick }) {
 	);
 }
 
+// -------------- Accordion Content --------------
 function AccordionContent({ isOpen, item }) {
 	const data = useData();
 	const dispatch = useDispatch();
 
 	const [status, setStatus] = useState({
-		mode: 'add',
-		submitted: false,
+		mode: 'adding',
 		editId: null,
 	});
+
+	const showAddButton =
+		!item.required ||
+		(status.mode === 'showing' && !item.title.startsWith('Personal'));
 
 	let editEntry = null;
 	if (Array.isArray(data[item.title])) {
@@ -73,17 +77,18 @@ function AccordionContent({ isOpen, item }) {
 	}
 
 	function handleChangeStatus(status) {
+		console.log(status.mode);
 		setStatus(status);
 	}
 
 	function handleSubmit(formData) {
-		if (status.mode === 'add') {
+		if (status.mode === 'adding') {
 			dispatch({
 				type: 'add',
 				title: item.title,
 				formData: { ...formData, id: crypto.randomUUID() },
 			});
-		} else if (status.mode === 'edit') {
+		} else if (status.mode === 'editing') {
 			dispatch({
 				type: 'edit',
 				title: item.title,
@@ -94,6 +99,7 @@ function AccordionContent({ isOpen, item }) {
 		setStatus((prev) => ({
 			...prev,
 			submitted: true,
+			mode: 'showing',
 		}));
 	}
 
@@ -107,22 +113,27 @@ function AccordionContent({ isOpen, item }) {
 
 	return (
 		<div className={`accordionContent ${isOpen ? 'open' : ''}`}>
-			{status.submitted ? (
+			{status.mode === 'showing' && (
 				<DataDisplay
 					title={item.title}
 					data={data[item.title]}
-					onClick={handleChangeStatus}
 					onDelete={handleDelete}
+					onEdit={handleChangeStatus}
 				/>
-			) : status.mode === 'add' ? (
+			)}
+
+			{status.mode === 'adding' && item.required && (
 				<FormComponent
 					mode="add"
 					required={item.required}
 					title={item.title}
 					formFields={item.content}
 					onSubmit={handleSubmit}
+					onCancel={handleChangeStatus}
 				/>
-			) : (
+			)}
+
+			{status.mode === 'editing' && item.required && (
 				<FormComponent
 					mode="edit"
 					required={item.required}
@@ -130,8 +141,34 @@ function AccordionContent({ isOpen, item }) {
 					data={editEntry || data[item.title]}
 					formFields={item.content}
 					onSubmit={handleSubmit}
+					onCancel={handleChangeStatus}
 				/>
 			)}
+
+			{showAddButton && <AddButton onClick={handleChangeStatus} item={item} />}
 		</div>
+	);
+}
+
+function AddButton({ item, onClick }) {
+	let content = '';
+
+	if (item.title === 'Work Experiences') {
+		content = 'Add new experience';
+	} else if (item.title === 'Education') {
+		content = 'Add new education';
+	} else if (item.title === 'Skills') {
+		content = 'Add new skill';
+	}
+
+	function handleClick() {
+		item.required = true;
+		onClick((prev) => ({ ...prev, mode: 'adding' }));
+	}
+
+	return (
+		<button className="button addButton" type="button" onClick={handleClick}>
+			{content}
+		</button>
 	);
 }

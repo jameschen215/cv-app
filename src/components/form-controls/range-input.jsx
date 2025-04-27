@@ -14,6 +14,7 @@ export default function RangeInput({ name, label, value, handleChange }) {
 				value={value}
 				step="5"
 				onChange={handleChange}
+				aria-required={true}
 			/>
 		</>
 	);

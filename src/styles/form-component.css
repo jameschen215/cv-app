@@ -16,5 +16,5 @@ form {
 .formRow:last-of-type {
 	flex-direction: row;
 	align-items: center;
-	justify-content: flex-end;
+	gap: 20px;
 }

@@ -7,7 +7,12 @@ export default function RadioInput({
 }) {
 	return (
 		<>
-			<label className="label radio-inputLabel">{label}</label>
+			<label className="label radio-inputLabel">
+				{label}{' '}
+				<span className="field-star" aria-hidden="true">
+					*
+				</span>
+			</label>
 
 			<div className="options-container">
 				{options.map((option, index) => (
@@ -18,6 +23,7 @@ export default function RadioInput({
 							value={option.value}
 							checked={value === option.value}
 							onChange={handleChange}
+							aria-required={true}
 						/>
 						{option.label}
 					</label>

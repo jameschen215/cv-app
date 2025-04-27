@@ -71,6 +71,27 @@
 	animation: expand 250ms ease-in-out forwards;
 }
 
+.accordionContent .button.addButton {
+	display: block;
+	padding: 8px 12px;
+	max-width: 450px;
+	width: 100%;
+	background-color: transparent;
+	border: 1px solid var(--green);
+	border-radius: 4px;
+	color: var(--green);
+	font-weight: 500;
+	cursor: pointer;
+	margin-top: 20px;
+
+	transition: color 250ms ease, background-color 250ms ease;
+}
+
+.accordionContent .button.addButton:hover {
+	background-color: var(--green);
+	color: var(--white);
+}
+
 @keyframes expand {
 	from {
 		max-height: 0;

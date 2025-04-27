@@ -5,7 +5,7 @@ export default function TextInput({
 	field: { name, label, placeholder },
 	value,
 	onChange,
-	required,
+	// required,
 	errors,
 	setErrors,
 	allTouched,
@@ -36,11 +36,11 @@ export default function TextInput({
 		<>
 			<label htmlFor={name} className="field-label">
 				{label}{' '}
-				{required && (
+				{
 					<span className="field-star" aria-hidden="true">
 						*
 					</span>
-				)}
+				}
 			</label>
 
 			<input
@@ -51,9 +51,7 @@ export default function TextInput({
 				placeholder={placeholder}
 				value={value}
 				onChange={handleChange}
-				// required={required}
-				aria-required={required}
-				// title="Only letters are allowed."
+				aria-required={true}
 				aria-invalid={!!errors[name]}
 				aria-describedby={`${name}-error-message`}
 			/>

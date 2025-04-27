@@ -5,7 +5,7 @@ export default function TelInput({
 	field: { name, label, placeholder },
 	value,
 	onChange,
-	required,
+	// required,
 	errors,
 	setErrors,
 	allTouched,
@@ -35,11 +35,11 @@ export default function TelInput({
 		<>
 			<label htmlFor={name} className="field-label">
 				{label}{' '}
-				{required && (
+				{
 					<span className="field-star" aria-hidden="true">
 						*
 					</span>
-				)}
+				}
 			</label>
 
 			<input
@@ -50,9 +50,7 @@ export default function TelInput({
 				placeholder={placeholder}
 				value={value}
 				onChange={handleChange}
-				// required={required}
-				aria-required={required}
-				// pattern="^\+?[0-9]{7,15}$"
+				aria-required={true}
 				title="Please enter a valid phone number with 7 to 15 digits. You can start with a + for the country code."
 				aria-invalid={!!errors[name]}
 				aria-describedby={`${name}-error-message ${name}-hint`}

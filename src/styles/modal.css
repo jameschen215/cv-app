@@ -1,0 +1,80 @@
+.modal {
+	display: block;
+
+	/* Keeps the modal in place relative to the viewport (not the document), 
+  so it doesn’t push the page down or affect the layout, and prevent 
+  scrolling on the page when modal is open. */
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	padding: 40px 20px 20px;
+	z-index: 2;
+	background-color: hsl(210deg 25% 15% / 0.75);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	/* For animation */
+	opacity: 0;
+	transform: translateY(100%);
+}
+
+.modal.show {
+	animation: slideIn 250ms ease-out forwards;
+}
+
+.modal-content {
+	/* 
+    Always control width.
+    Always control max-height.
+    Let aspect-ratio calculate the rest. 
+  */
+	width: 90vw;
+	height: auto;
+	max-width: 595px; /* about A4 width */
+	max-height: 90vh;
+
+	/* A4 paper aspect ratio */
+	aspect-ratio: 210 / 297;
+	background: var(--white);
+
+	box-shadow: 4px 8px 16px var(--large-shadow);
+}
+
+.modal-close {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 36px;
+	height: 36px;
+}
+
+.modal-close-btn {
+	width: 100%;
+	height: 100%;
+	border: none;
+	color: var(--white);
+	background-color: transparent;
+
+	transition: transform 200ms ease;
+
+	cursor: pointer;
+}
+
+.modal-close-btn:hover {
+	transform: rotate(90deg);
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

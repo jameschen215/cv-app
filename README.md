@@ -19,3 +19,5 @@
   </label>
   <input id="fileInput" type="file" style={{ display: 'none' }} />
   ```
+
+- How to prevent the scrollbar from appearing during the slide-in animation of a modal." Code in `modal.css`.

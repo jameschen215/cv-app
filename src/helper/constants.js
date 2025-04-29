@@ -206,3 +206,72 @@ export const MONTHS = [
 	'November',
 	'December',
 ];
+
+export const FAKE_DATA = {
+	'Personal Details': {
+		photo: null,
+		'first-name': 'John',
+		'last-name': 'Doe',
+		position: 'Full stack web developer',
+		email: 'johndoe@example.com',
+		'phone-number': '+12345678900',
+		address: 'Los Angeles',
+		portfolio: 'www.johndoe.com',
+	},
+	'Personal Profile': {
+		profile:
+			'I am a hardworking and technically minded person who loves to solve problems and keep up to date with new technology both hardware and software related. I have a good understanding of products and always keep up to date with anything new that comes onto the market that might be beneficial for any of the users I deal with.',
+	},
+	'Work Experiences': [
+		{
+			id: crypto.randomUUID(),
+			'job-title': 'UX Designer',
+			'job-type': 'full-time',
+			employer: 'Meta',
+			'employer-address': 'Los Angeles',
+			'start-date-month': 'June',
+			'start-date-year': '2018',
+			'end-date-month': 'July',
+			'end-date-year': '2020',
+			present: false,
+			responsibilities:
+				'Responsible for user research, user flow and wireframe development, prototyping, usability testing, and cross-functional collaboration to optimize user experience.',
+		},
+		{
+			id: crypto.randomUUID(),
+			'job-title': 'Frontend web developer',
+			'job-type': 'part-time',
+			employer: 'ABC',
+			'employer-address': 'Los Angeles',
+			'start-date-month': 'May',
+			'start-date-year': '2019',
+			'end-date-month': 'September',
+			'end-date-year': '2021',
+			present: false,
+			responsibilities:
+				'Develop and maintain responsive web applications, implement UI designs with modern frameworks, optimize performance, ensure cross-browser compatibility, and collaborate with designers and backend teams to deliver seamless user experiences.',
+		},
+	],
+	Education: [
+		{
+			school: 'MIT',
+			qualification: "Bachelor's Degree",
+			subject: 'Computer Science',
+			'completion-date-month': 'June',
+			'completion-date-year': '2018',
+		},
+		{
+			school: 'Wardiere University',
+			qualification: 'Bachelor of Fine Arts',
+			subject: 'Graphic Design',
+			'completion-date-month': 'July',
+			'completion-date-year': '2016',
+		},
+	],
+	Skills: [
+		{ skill: 'JavaScript', proficiency: 95 },
+		{ skill: 'React', proficiency: 90 },
+		{ skill: 'Next.js', proficiency: 85 },
+		{ skill: 'Express', proficiency: 85 },
+	],
+};

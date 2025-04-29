@@ -13,6 +13,11 @@
 	--outline-color: hsl(0, 0%, 55%);
 	--accent-color: hsl(215deg, 15%, 25%);
 	--accent-color: hsl(100deg, 100%, 35%);
+	--resume-bg: hsl(210deg 25% 15% / 0.75);
+	--divider-light: hsl(0deg 0% 100% / 0.5);
+	--divider-dark: hsl(0deg 0% 0% / 0.5);
+
+	--resume-primary: hsl(210deg 10% 30%);
 
 	--small-shadow: hsl(0deg 0% 0% / 0.25);
 	--medium-shadow: hsl(0deg 0% 0% / 0.15);
@@ -80,4 +85,18 @@ progress:focus:not(:focus-visible) {
 	clip: rect(0, 0, 0, 0);
 	border: 0;
 	white-space: nowrap;
+}
+
+/* temporary style */
+
+.resume-wrapper {
+	margin-top: 10px;
+	width: auto;
+	height: 95vh;
+
+	/* A4 paper aspect ratio */
+	aspect-ratio: 210 / 297;
+	background: var(--white);
+	/* border: 1px solid #000; */
+	box-shadow: 4px 8px 8px var(--large-shadow);
 }

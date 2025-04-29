@@ -99,6 +99,7 @@ export default function FormComponent({
 			console.log('Form submitted successfully!');
 			setAllTouched(false);
 			setFormErrors({});
+			console.log(data);
 		}
 	}
 

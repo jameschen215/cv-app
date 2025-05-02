@@ -1,10 +1,12 @@
 import defaultPhoto from '../../assets/default.jpg';
 
 export default function Photo({ photo }) {
+	const imgUrl = photo ? URL.createObjectURL(photo) : defaultPhoto;
+
 	return (
 		<div className="photo-wrapper">
 			<div className="photo">
-				<img src={photo ?? defaultPhoto} alt="Resume Photo" />
+				<img src={imgUrl} alt="Resume Photo" />
 			</div>
 		</div>
 	);

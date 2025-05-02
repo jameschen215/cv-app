@@ -4,19 +4,19 @@ import { DeleteButton, EditButton } from './buttons';
 import { ExperienceItem, EducationItem, SkillItem } from './display-items';
 
 const config = {
-	'Personal Details': { isList: false, showDelete: false },
-	'Personal Profile': { isList: false, showDelete: false },
-	'Work Experiences': {
+	personalDetails: { isList: false, showDelete: false },
+	personalProfile: { isList: false, showDelete: false },
+	workExperiences: {
 		isList: true,
 		showDelete: true,
 		ItemComponent: ExperienceItem,
 	},
-	Education: {
+	education: {
 		isList: true,
 		showDelete: true,
 		ItemComponent: EducationItem,
 	},
-	Skills: {
+	skills: {
 		isList: true,
 		showDelete: true,
 		ItemComponent: SkillItem,
@@ -49,24 +49,23 @@ export default function DataDisplay({ title, data, onEdit, onDelete }) {
 			{isList || (
 				<div className="data-group">
 					<div className="data">
-						{title === 'Personal Details' && (
-							//
+						{title === 'personalDetails' && (
 							<>
 								<span className="item-title">
-									{data['first-name']} {data['last-name']}
+									{data.firstName} {data.lastName}
 								</span>
 
 								<span>{data.email}</span>
+								{data.portfolio && <span>{data.portfolio}</span>}
 
 								<div>
-									<span>{data.position}</span> |{' '}
-									<span>{data['phone-number']}</span> |{' '}
-									<span>{data.address}</span>
+									<span>{data.position}</span> | <span>{data.phoneNumber}</span>{' '}
+									| <span>{data.address}</span>
 								</div>
 							</>
 						)}
 
-						{title === 'Personal Profile' && <div>{data.profile}</div>}
+						{title === 'personalProfile' && <div>{data.profile}</div>}
 					</div>
 
 					<EditButton

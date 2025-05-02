@@ -34,24 +34,27 @@ textarea {
 }
 
 /* Style button */
-form button {
-	padding: 8px 12px;
-	max-width: 450px;
-	width: 100%;
-	background-color: transparent;
-	border: 1px solid var(--green);
-	border-radius: 4px;
-	color: var(--green);
-	font-weight: 500;
-	/* font-size: 1.8rem; */
-	cursor: pointer;
 
+form button {
+	width: 50%;
+	padding: 0.6em 1.2em;
+	border-radius: 0.4em;
+	background-color: var(--white);
+	border: 1px solid var(--green);
+	color: var(--green);
+	font-size: 1.4rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	will-change: color, background-color;
 	transition: color 250ms ease, background-color 250ms ease;
+
+	cursor: pointer;
 }
 
-form button:hover {
-	background-color: var(--green);
+form button:hover,
+form button:active {
 	color: var(--white);
+	background-color: var(--green);
 }
 
 /* Style file input */

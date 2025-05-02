@@ -3,19 +3,19 @@ import { capitalFirstLetter } from './utils';
 // ------------------------ Validate form ------------------------
 export function validateForm(title, formData) {
 	switch (title) {
-		case 'Personal Details': {
+		case 'personalDetails': {
 			return validatePersonalDetails(formData);
 		}
-		case 'Personal Profile': {
+		case 'personalProfile': {
 			return validatePersonalProfile(formData);
 		}
-		case 'Work Experiences': {
+		case 'workExperiences': {
 			return validateWorkExperiences(formData);
 		}
-		case 'Education': {
+		case 'education': {
 			return validateEducation(formData);
 		}
-		case 'Skills': {
+		case 'skills': {
 			return validateSkills(formData);
 		}
 		default:
@@ -29,12 +29,12 @@ function validatePersonalDetails(formData) {
 	const telRe = /^\+?[0-9]{7,15}$/;
 	const emailRe = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-	if (!formData['first-name'].trim()) {
-		errors['first-name'] = 'First name is required.';
+	if (!formData.firstName.trim()) {
+		errors.firstName = 'First name is required.';
 	}
 
-	if (!formData['last-name'].trim()) {
-		errors['last-name'] = 'Last name is required.';
+	if (!formData.lastName.trim()) {
+		errors.lastName = 'Last name is required.';
 	}
 
 	if (!formData.position.trim()) {
@@ -47,10 +47,10 @@ function validatePersonalDetails(formData) {
 		errors.email = 'Email is invalid.';
 	}
 
-	if (!formData['phone-number'].trim()) {
-		errors['phone-number'] = 'Phone number is required.';
-	} else if (!telRe.test(formData['phone-number'])) {
-		errors['phone-number'] = 'Phone number is invalid.';
+	if (!formData.phoneNumber.trim()) {
+		errors.phoneNumber = 'Phone number is required.';
+	} else if (!telRe.test(formData.phoneNumber)) {
+		errors.phoneNumber = 'Phone number is invalid.';
 	}
 
 	if (!formData.address.trim()) {
@@ -73,37 +73,41 @@ function validatePersonalProfile(formData) {
 function validateWorkExperiences(formData) {
 	let errors = {};
 
-	if (!formData['job-title'].trim()) {
-		errors['job-title'] = 'Job title is required.';
+	if (!formData.jobTitle.trim()) {
+		errors.jobTitle = 'Job title is required.';
 	}
 
-	if (!formData['job-type'].trim()) {
-		errors['job-type'] = 'Job type is required.';
+	if (!formData.jobType.trim()) {
+		errors.jobType = 'Job type is required.';
+	}
+
+	if (!formData.responsibilities.trim()) {
+		errors.responsibilities = 'Responsibilities is required.';
 	}
 
 	if (!formData.employer.trim()) {
 		errors.employer = 'Employer is required.';
 	}
 
-	if (!formData['employer-address'].trim()) {
-		errors['employer-address'] = 'Employer address is required.';
+	if (!formData.employerAddress.trim()) {
+		errors.employerAddress = 'Employer address is required.';
 	}
 
-	if (!formData['start-date-month']?.trim()) {
-		errors['start-date-month'] = 'Month is required.';
+	if (!formData.startDateMonth?.trim()) {
+		errors.startDateMonth = 'Month is required.';
 	}
 
-	if (!formData['start-date-year']?.trim()) {
-		errors['start-date-year'] = 'Year is required.';
+	if (!formData.startDateYear?.trim()) {
+		errors.startDateYear = 'Year is required.';
 	}
 
 	if (!formData.present) {
-		if (!formData['end-date-month']?.trim()) {
-			errors['end-date-month'] = 'Month is required.';
+		if (!formData.endDateMonth?.trim()) {
+			errors.endDateMonth = 'Month is required.';
 		}
 
-		if (!formData['end-date-year']?.trim()) {
-			errors['end-date-year'] = 'Year is required.';
+		if (!formData.endDateYear?.trim()) {
+			errors.endDateYear = 'Year is required.';
 		}
 	}
 	return errors;
@@ -124,12 +128,12 @@ function validateEducation(formData) {
 		errors.subject = 'Subject is required.';
 	}
 
-	if (!formData['completion-date-month']?.trim()) {
-		errors['completion-date-month'] = 'Month is required.';
+	if (!formData.completionDateMonth?.trim()) {
+		errors.completionDateMonth = 'Month is required.';
 	}
 
-	if (!formData['completion-date-year']?.trim()) {
-		errors['completion-date-year'] = 'Year is required.';
+	if (!formData.completionDateYear?.trim()) {
+		errors.completionDateYear = 'Year is required.';
 	}
 
 	return errors;
@@ -172,6 +176,16 @@ export function validateEmail(email) {
 
 	if (!re.test(String(email).toLowerCase())) {
 		return 'Invalid email format.';
+	}
+	return null;
+}
+
+// Validate the input data of email type
+export function validateURL(url) {
+	const re = /^www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+
+	if (!re.test(String(url).toLowerCase())) {
+		return 'Invalid url format.';
 	}
 	return null;
 }

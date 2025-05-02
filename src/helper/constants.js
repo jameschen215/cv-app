@@ -8,18 +8,19 @@ import {
 } from 'lucide-react';
 
 export const ICONS = {
-	'Personal Details': User,
-	'Personal Profile': FileSliders,
-	'Work Experiences': BriefcaseBusiness,
-	Education: GraduationCap,
-	Skills: SlidersHorizontal,
-	References: Users,
+	personalDetails: User,
+	personalProfile: FileSliders,
+	workExperiences: BriefcaseBusiness,
+	education: GraduationCap,
+	skills: SlidersHorizontal,
+	references: Users,
 };
 
 export const ACCORDION_ITEMS = [
 	{
 		id: crypto.randomUUID(),
-		title: 'Personal Details',
+		titleForLabel: 'Personal Details',
+		title: 'personalDetails',
 		required: true,
 		content: [
 			{
@@ -31,14 +32,14 @@ export const ACCORDION_ITEMS = [
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'first-name',
+				name: 'firstName',
 				label: 'First Name',
 				type: 'text',
 				placeholder: 'John',
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'last-name',
+				name: 'lastName',
 				label: 'Last Name',
 				type: 'text',
 				placeholder: 'Doe',
@@ -59,7 +60,7 @@ export const ACCORDION_ITEMS = [
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'phone-number',
+				name: 'phoneNumber',
 				label: 'Phone',
 				type: 'tel',
 				placeholder: '+86 123 4567 8900',
@@ -71,11 +72,19 @@ export const ACCORDION_ITEMS = [
 				type: 'text',
 				placeholder: 'London',
 			},
+			{
+				id: crypto.randomUUID(),
+				name: 'portfolio',
+				label: 'Portfolio',
+				type: 'url',
+				placeholder: 'www.johndoe.com',
+			},
 		],
 	},
 	{
 		id: crypto.randomUUID(),
-		title: 'Personal Profile',
+		titleForLabel: 'Personal Profile',
+		title: 'personalProfile',
 		required: true,
 		content: [
 			{
@@ -89,18 +98,19 @@ export const ACCORDION_ITEMS = [
 	},
 	{
 		id: crypto.randomUUID(),
-		title: 'Work Experiences',
+		titleForLabel: 'Work Experiences',
+		title: 'workExperiences',
 		required: false,
 		content: [
 			{
 				id: crypto.randomUUID(),
-				name: 'job-title',
+				name: 'jobTitle',
 				label: 'Job title',
 				type: 'text',
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'job-type',
+				name: 'jobType',
 				label: 'Job Type',
 				type: 'radio',
 				options: [
@@ -110,25 +120,31 @@ export const ACCORDION_ITEMS = [
 			},
 			{
 				id: crypto.randomUUID(),
+				name: 'responsibilities',
+				label: 'Responsibilities',
+				type: 'textarea',
+			},
+			{
+				id: crypto.randomUUID(),
 				name: 'employer',
 				label: 'Employer',
 				type: 'text',
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'employer-address',
+				name: 'employerAddress',
 				label: 'City',
 				type: 'text',
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'start-date',
+				name: 'startDate',
 				label: 'Start Date',
 				type: 'date',
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'end-date',
+				name: 'endDate',
 				label: 'End Date',
 				type: 'date',
 			},
@@ -142,7 +158,8 @@ export const ACCORDION_ITEMS = [
 	},
 	{
 		id: crypto.randomUUID(),
-		title: 'Education',
+		titleForLabel: 'Education',
+		title: 'education',
 		required: false,
 		content: [
 			{
@@ -165,7 +182,7 @@ export const ACCORDION_ITEMS = [
 			},
 			{
 				id: crypto.randomUUID(),
-				name: 'completion-date',
+				name: 'completionDate',
 				label: 'Date of Completion',
 				type: 'date',
 			},
@@ -173,7 +190,8 @@ export const ACCORDION_ITEMS = [
 	},
 	{
 		id: crypto.randomUUID(),
-		title: 'Skills',
+		titleForLabel: 'Skills',
+		title: 'skills',
 		required: false,
 		content: [
 			{

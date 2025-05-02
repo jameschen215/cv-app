@@ -3,6 +3,8 @@ export function dataReducer(data, action) {
 		case 'add': {
 			const prevSubData = data[action.title];
 
+			// console.log('form data from reducer: ', action.formData);
+
 			if (Array.isArray(prevSubData)) {
 				// Append to existing array
 				return {
@@ -11,7 +13,7 @@ export function dataReducer(data, action) {
 				};
 			}
 
-			if (!action.title.startsWith('Personal')) {
+			if (!action.title.startsWith('personal')) {
 				// Initialize as array with first item
 				return {
 					...data,
@@ -49,7 +51,7 @@ export function dataReducer(data, action) {
 		case 'delete': {
 			const prevSubData = data[action.title];
 
-			if (!Array.isArray(prevSubData)) break;
+			if (!Array.isArray(prevSubData)) return data;
 
 			const updatedSubData = prevSubData.filter(
 				(data) => data.id !== action.id

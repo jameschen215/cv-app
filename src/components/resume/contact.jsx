@@ -1,8 +1,10 @@
 import { PhoneCall, Mail, MapPin, Globe } from 'lucide-react';
 
-export default function Contact({
-	data: { 'phone-number': phoneNumber, email, address, portfolio },
-}) {
+export default function Contact({ data }) {
+	if (!data) return;
+
+	const { phoneNumber, email, address, portfolio } = data;
+
 	return (
 		<div className="info-group">
 			<div className="info-title">
@@ -21,14 +23,16 @@ export default function Contact({
 					<span className="info-text">{email}</span>
 				</li>
 
+				{portfolio && (
+					<li className="info-row">
+						<div className="info-icon">{<Globe strokeWidth={1} />}</div>{' '}
+						<span className="info-text">{portfolio}</span>
+					</li>
+				)}
+
 				<li className="info-row">
 					<div className="info-icon">{<MapPin strokeWidth={1} />}</div>{' '}
 					<span className="info-text">{address}</span>
-				</li>
-
-				<li className="info-row">
-					<div className="info-icon">{<Globe strokeWidth={1} />}</div>{' '}
-					<span className="info-text">{portfolio}</span>
 				</li>
 			</ul>
 		</div>

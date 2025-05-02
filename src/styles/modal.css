@@ -33,16 +33,14 @@
     Always control max-height.
     Let aspect-ratio calculate the rest. 
   */
-	width: 90vw;
-	height: auto;
-	max-width: 595px;
+	max-width: 90vw;
 	max-height: 90vh;
 
 	/* A4 paper aspect ratio */
 	aspect-ratio: 210 / 297;
 	background: var(--white);
 
-	box-shadow: 4px 8px 16px var(--large-shadow);
+	/* box-shadow: 4px 8px 16px var(--large-shadow); */
 }
 
 .modal-close {

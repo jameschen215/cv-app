@@ -8,8 +8,8 @@ export default function DateSelect({
 	disableEndDate,
 	handleChange,
 }) {
-	const monthName = name + '-month';
-	const yearName = name + '-year';
+	const monthName = name + 'Month';
+	const yearName = name + 'Year';
 
 	return (
 		<>
@@ -55,7 +55,7 @@ function YearSelect({ name, value, errors, disableEndDate, onChange }) {
 				aria-required="true"
 				aria-invalid={!!errors[name]}
 				aria-describedby={`${name}-error-message`}
-				disabled={name.startsWith('end-date') && disableEndDate}>
+				disabled={name.startsWith('endDate') && disableEndDate}>
 				<option value="" disabled>
 					Year
 				</option>
@@ -90,7 +90,7 @@ function MonthSelect({ name, value, errors, disableEndDate, onChange }) {
 				aria-required="true"
 				aria-invalid={!!errors[name]}
 				aria-describedby={`${name}-error-message`}
-				disabled={name.startsWith('end-date') && disableEndDate}>
+				disabled={name.startsWith('endDate') && disableEndDate}>
 				<option value="" disabled>
 					Month
 				</option>

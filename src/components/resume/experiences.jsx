@@ -1,6 +1,8 @@
 import { capitalFirstLetter } from '../../helper/utils';
 
 export default function Experiences({ data }) {
+	if (!data) return;
+
 	return (
 		<div className="experiences">
 			<div className="info-title">
@@ -12,13 +14,13 @@ export default function Experiences({ data }) {
 				{data.map(
 					(
 						{
-							'job-title': jobTitle,
-							'job-type': jobType,
+							jobTitle,
+							jobType,
 							employer,
-							'start-date-month': startMonth,
-							'start-date-year': startYear,
-							'end-date-month': endMonth,
-							'end-date-year': endYear,
+							startDateMonth,
+							startDateYear,
+							endDateMonth,
+							endDateYear,
 							present,
 							responsibilities,
 						},
@@ -36,13 +38,13 @@ export default function Experiences({ data }) {
 
 									<div className="date">
 										<span className="start-date">
-											{startMonth.slice(0, 3) || ''} {startYear}
+											{startDateMonth.slice(0, 3) || ''} {startDateYear}
 										</span>{' '}
 										-{' '}
 										<span className="end-date">
 											{present
 												? 'present'
-												: (endMonth.slice(0, 3) || '') + ' ' + endYear}
+												: (endDateMonth.slice(0, 3) || '') + ' ' + endDateYear}
 										</span>
 									</div>
 								</div>

@@ -4,10 +4,10 @@ import examplePhoto from '../assets/example.jpg';
 
 import Header from './header';
 
-export default function LandingPage() {
+export default function LandingPage({ onClick }) {
 	return (
 		<header className="landing-page">
-			<Header isFactory={false} />
+			<Header onClick={onClick} />
 			<Example />
 		</header>
 	);

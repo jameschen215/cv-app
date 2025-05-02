@@ -8,24 +8,34 @@ import Profile from './profile';
 import Skills from './skills';
 
 export default function Resume({ data }) {
+	if (!data) return;
+
+	const {
+		personalDetails,
+		personalProfile,
+		workExperiences,
+		education,
+		skills,
+	} = data;
+
 	return (
 		<div className="resume">
 			<LeftSide>
-				<Photo photo={data['Personal Details'].photo} />
-				<Contact data={data['Personal Details']} />
-				<Education data={data['Education']} />
-				<Skills skills={data['Skills']} />
+				<Photo photo={personalDetails?.photo} />
+				<Contact data={personalDetails} />
+				<Education data={education} />
+				<Skills skills={skills} />
 			</LeftSide>
 
 			<RightSide>
 				<Header
-					firstName={data['Personal Details']['first-name']}
-					lastName={data['Personal Details']['last-name']}
-					position={data['Personal Details'].position}
+					firstName={personalDetails?.firstName}
+					lastName={personalDetails?.lastName}
+					position={personalDetails?.position}
 				/>
-				<Profile profile={data['Personal Profile'].profile} />
+				<Profile profile={personalProfile?.profile} />
 
-				<Experiences data={data['Work Experiences']} />
+				<Experiences data={workExperiences} />
 			</RightSide>
 		</div>
 	);

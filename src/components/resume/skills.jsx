@@ -1,8 +1,8 @@
-import '../../styles/resume/contact.css';
-
 import { Dot } from 'lucide-react';
 
 export default function Skills({ skills }) {
+	if (!skills) return;
+
 	return (
 		<div className="info-group">
 			<div className="info-title">
@@ -15,7 +15,7 @@ export default function Skills({ skills }) {
 					<li className="info-row skill" key={index}>
 						<div>
 							<span className="info-icon">
-								<Dot strokeWidth={5} />
+								<Dot strokeWidth={3} />
 							</span>
 							<label htmlFor={skill} className="info-text">
 								{skill}

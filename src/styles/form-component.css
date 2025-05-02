@@ -1,10 +1,11 @@
 /* form */
 
 form {
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+
+	font-size: 1.6rem;
 }
 
 .formRow {
@@ -16,5 +17,15 @@ form {
 .formRow:last-of-type {
 	flex-direction: row;
 	align-items: center;
+	justify-content: end;
 	gap: 20px;
 }
+
+/* @media screen and (min-width: 896px) {
+	.formRow:last-of-type {
+		justify-content: end;
+	}
+	.formRow:last-of-type button {
+		width: auto;
+	}
+} */

@@ -86,17 +86,3 @@ progress:focus:not(:focus-visible) {
 	border: 0;
 	white-space: nowrap;
 }
-
-/* temporary style */
-
-.resume-wrapper {
-	margin-top: 10px;
-	width: auto;
-	height: 95vh;
-
-	/* A4 paper aspect ratio */
-	aspect-ratio: 210 / 297;
-	background: var(--white);
-	/* border: 1px solid #000; */
-	box-shadow: 4px 8px 8px var(--large-shadow);
-}

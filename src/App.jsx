@@ -4,18 +4,23 @@ import Nav from './components/nav';
 import LandingPage from './components/landing-page';
 import Footer from './components/footer';
 import CVFactory from './components/cv-factory';
+import DataProvider from './context/data-provider';
+import { useState } from 'react';
 
 export default function App() {
-	let isEditing = true;
+	const [isEditing, setIsEditing] = useState(false);
 
 	return (
-		<div className="app">
-			<Nav />
-			{isEditing || <LandingPage />}
+		<DataProvider>
+			<div className="app">
+				<Nav />
 
-			{isEditing && <CVFactory />}
+				{isEditing || <LandingPage onClick={() => setIsEditing(true)} />}
 
-			{isEditing || <Footer />}
-		</div>
+				{isEditing && <CVFactory onCancel={() => setIsEditing(false)} />}
+
+				{isEditing || <Footer />}
+			</div>
+		</DataProvider>
 	);
 }

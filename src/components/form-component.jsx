@@ -14,6 +14,7 @@ import RangeInput from './form-controls/range-input';
 import DateSelect from './form-controls/date-select';
 
 import { validateForm } from '../helper/validation';
+import URLInput from './form-controls/url-input';
 
 export default function FormComponent({
 	mode = 'add',
@@ -56,9 +57,14 @@ export default function FormComponent({
 		setFormData((prev) => ({
 			...prev,
 			[name]: checked,
-			// If present, disable end state and end state error messages
-			...(checked ? { 'end-date-month': '', 'end-date-year': '' } : {}),
+			// If present, disable end date
+			...(checked ? { endDateMonth: '', endDateYear: '' } : {}),
 		}));
+
+		if (checked) {
+			// If present, empty end date error
+			setFormErrors((prev) => ({ ...prev, endDateMonth: '', endDateYear: '' }));
+		}
 	}
 
 	function handleChange(ev) {
@@ -99,7 +105,6 @@ export default function FormComponent({
 			console.log('Form submitted successfully!');
 			setAllTouched(false);
 			setFormErrors({});
-			console.log(data);
 		}
 	}
 
@@ -124,7 +129,6 @@ export default function FormComponent({
 								errors={formErrors}
 								setErrors={setFormErrors}
 								onChange={handleChange}
-								// required={required}
 								allTouched={allTouched}
 							/>
 						)}
@@ -174,6 +178,16 @@ export default function FormComponent({
 								allTouched={allTouched}
 							/>
 						)}
+						{type === 'url' && (
+							<URLInput
+								field={field}
+								value={formData[name] || ''}
+								onChange={handleChange}
+								errors={formErrors}
+								setErrors={setFormErrors}
+								allTouched={allTouched}
+							/>
+						)}
 						{type === 'tel' && (
 							<TelInput
 								field={field}
@@ -199,7 +213,7 @@ export default function FormComponent({
 			})}
 
 			<div className="formRow">
-				{title.startsWith('Personal') || (
+				{title.startsWith('personal') || (
 					<button type="button" onClick={() => onCancel()}>
 						Cancel
 					</button>

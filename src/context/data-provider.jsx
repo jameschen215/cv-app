@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 import { dataReducer } from './data-reducer';
 import { DataContext, DataDispatchContext } from './data-context';
 
-export function DataProvider({ children }) {
+export default function DataProvider({ children }) {
 	const [data, dispatch] = useReducer(dataReducer, {});
 
 	return (

@@ -49,3 +49,16 @@
 	font-weight: 400;
 	margin-top: 4px;
 }
+
+.item-title {
+	font-weight: 500;
+}
+
+.item-content {
+	display: flex;
+	flex-direction: column;
+}
+
+.item-content.skill {
+	display: inline-block;
+}

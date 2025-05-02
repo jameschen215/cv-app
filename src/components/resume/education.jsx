@@ -1,4 +1,6 @@
 export default function Education({ data }) {
+	if (!data) return;
+
 	return (
 		<div className="info-group">
 			<div className="info-title">
@@ -10,8 +12,8 @@ export default function Education({ data }) {
 				{data.map(
 					(
 						{
-							'completion-date-month': month,
-							'completion-date-year': year,
+							completionDateMonth: month,
+							completionDateYear: year,
 							school,
 							qualification,
 							subject,

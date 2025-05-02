@@ -1,40 +1,41 @@
 export function ExperienceItem({ item }) {
-	const startDate = item['start-date-month'] + ', ' + item['start-date-year'];
-	const endDate = item['end-date-month'] + ', ' + item['end-date-year'];
+	const startDate = item.startDateMonth?.slice(0, 3) + ' ' + item.startDateYear;
+	const endDate = item.present
+		? 'Present'
+		: item.endDateMonth?.slice(0, 3) + ' ' + item.endDateYear;
 
 	return (
-		<>
-			<span className="item-title">{item['job-title']}</span>
+		<div className="item-content">
+			<span className="item-title">{item.jobTitle}</span>
 
 			<div>
-				<span>{item.employer}</span> | <span>{item['employer-address']}</span> |{' '}
+				<span>{item.employer}</span> | <span>{item.employerAddress}</span> |{' '}
 				<span>
 					{startDate} - {endDate}
 				</span>
 			</div>
-		</>
+		</div>
 	);
 }
 
 export function EducationItem({ item }) {
-	const date =
-		item['completion-date-month'] + ', ' + item['completion-date-year'];
+	const date = item.completionDateMonth + ' ' + item.completionDateYear;
 
 	return (
-		<>
+		<div className="item-content">
 			<span className="item-title">{item.school}</span>
 
 			<div>
 				<span>{item.qualification}</span> | <span>{item.subject}</span> |{' '}
 				<span>{date}</span>
 			</div>
-		</>
+		</div>
 	);
 }
 
 export function SkillItem({ item }) {
 	return (
-		<div>
+		<div className="item-content skill">
 			<span>{item.skill}</span> - <span>{item.proficiency}</span>
 		</div>
 	);

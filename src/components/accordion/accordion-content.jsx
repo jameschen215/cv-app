@@ -19,19 +19,25 @@ export default function AccordionContent({ item, isOpen }) {
 
 	const showAddButton =
 		!isRequired ||
-		(status.mode === 'showing' && !item.title.startsWith('Personal'));
+		(status.mode === 'showing' && !item.title.startsWith('personal'));
 
 	const editEntry = Array.isArray(data[item.title])
 		? data[item.title].find((entry) => entry.id === status.editId)
 		: data[item.title];
 
+	// useEffect(() => {
+	// 	console.log('🔄 Context data updated:', data);
+	// }, [data]);
+
 	function handleSubmit(formData) {
+		console.log('data before submitting: ', data);
 		if (status.mode === 'adding') {
 			dispatch({
 				type: 'add',
 				title: item.title,
 				formData: { ...formData, id: crypto.randomUUID() },
 			});
+			console.log('form data from accordion: ', formData);
 		} else if (status.mode === 'editing') {
 			dispatch({
 				type: 'edit',

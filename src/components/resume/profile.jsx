@@ -1,4 +1,6 @@
 export default function Profile({ profile }) {
+	if (!profile) return;
+
 	return (
 		<div className="profile">
 			<div className="info-title">
@@ -6,7 +8,7 @@ export default function Profile({ profile }) {
 				<div className="underline"></div>
 			</div>
 			<div className="info-content">
-				<p>{profile}</p>
+				<p>{profile || ''}</p>
 			</div>
 		</div>
 	);

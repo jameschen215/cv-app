@@ -1,4 +1,4 @@
-export default function Header({ firstName, lastName, position }) {
+export default function CVHeader({ firstName, lastName, position }) {
 	return (
 		<div className="header">
 			<h1>

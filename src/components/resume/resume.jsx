@@ -1,8 +1,8 @@
 import '../../styles/resume.css';
 import Contact from './contact';
+import CVHeader from './cv-header';
 import Education from './education';
 import Experiences from './experiences';
-import Header from './header';
 import Photo from './photo';
 import Profile from './profile';
 import Skills from './skills';
@@ -28,7 +28,7 @@ export default function Resume({ data }) {
 			</LeftSide>
 
 			<RightSide>
-				<Header
+				<CVHeader
 					firstName={personalDetails?.firstName}
 					lastName={personalDetails?.lastName}
 					position={personalDetails?.position}

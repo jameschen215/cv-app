@@ -1,4 +1,3 @@
-import '../../styles/date-select.css';
 import { MONTHS } from '../../helper/constants';
 
 export default function DateSelect({

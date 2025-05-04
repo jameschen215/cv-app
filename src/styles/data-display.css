@@ -3,6 +3,7 @@
 	flex-direction: column;
 	gap: 20px;
 }
+
 .data-group {
 	width: 100%;
 	display: flex;
@@ -25,7 +26,7 @@
 	color: var(--black);
 }
 
-.data-display .button {
+.data-btn {
 	display: flex;
 	align-items: center;
 	gap: 4px;
@@ -34,18 +35,18 @@
 	border: none;
 	background-color: transparent;
 	color: var(--primary);
-	cursor: pointer;
 	font-weight: 500;
+	cursor: pointer;
 }
 
-.data-display .icon {
+.data-btn .icon {
 	width: 18px;
 	height: 18px;
 	display: flex;
 	align-items: center;
 }
 
-.data-display .button.delete-button {
+.data-btn--delete {
 	font-weight: 400;
 	margin-top: 4px;
 }

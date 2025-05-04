@@ -30,39 +30,26 @@
 .header-title p {
 	margin-top: 1em;
 
-	/* margin-top: 30px; */
-	/* margin-bottom: 40px; */
 	font-size: 1.6rem;
 	text-align: center;
 	width: 100%;
 	color: var(--secondary);
 }
 
-.header-title button {
+.header-btn {
 	margin-top: 1.8em;
 	margin-bottom: 1.8em;
-	padding: 0.8em 1.6em;
-	border-radius: 0.5em;
 
-	border: none;
-	background-color: var(--primary);
-	background-color: var(--yellow);
-	color: var(--white);
-	text-shadow: 2px 2px 2px var(--medium-shadow);
+	border: 1px solid var(--blue);
+	background-color: transparent;
+	color: var(--blue);
 	font-size: 1.6rem;
-	font-weight: 500;
-	text-transform: uppercase;
-	cursor: pointer;
-	box-shadow: 4px 4px 8px var(--medium-shadow);
-	transition: transform 200ms ease;
 }
 
-.header-title button:hover {
-	transform: translateY(-4px);
-}
-
-.header-title button:active {
-	transform: translateY(1px);
+.header-btn:hover,
+.header-btn:active {
+	color: var(--white);
+	background-color: var(--blue);
 }
 
 @media screen and (min-width: 896px) {

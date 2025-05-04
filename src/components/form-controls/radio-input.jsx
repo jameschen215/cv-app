@@ -1,5 +1,3 @@
-import '../../styles/radio-input.css';
-
 export default function RadioInput({
 	field: { name, label, options },
 	value,

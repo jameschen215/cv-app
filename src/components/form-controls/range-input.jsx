@@ -1,5 +1,3 @@
-import '../../styles/range-input.css';
-
 export default function RangeInput({ name, label, value, handleChange }) {
 	return (
 		<>

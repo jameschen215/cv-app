@@ -293,10 +293,6 @@
 }
 
 @media screen and (min-width: 576px) {
-	/* html {
-		font-size: 15px;
-	} */
-
 	.resume {
 		font-size: 1.2rem;
 	}
@@ -304,6 +300,6 @@
 
 @media screen and (min-width: 896px) {
 	.resume {
-		font-size: 1.4rem;
+		font-size: 1.25rem;
 	}
 }

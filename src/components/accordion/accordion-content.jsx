@@ -25,12 +25,7 @@ export default function AccordionContent({ item, isOpen }) {
 		? data[item.title].find((entry) => entry.id === status.editId)
 		: data[item.title];
 
-	// useEffect(() => {
-	// 	console.log('🔄 Context data updated:', data);
-	// }, [data]);
-
 	function handleSubmit(formData) {
-		console.log('data before submitting: ', data);
 		if (status.mode === 'adding') {
 			dispatch({
 				type: 'add',

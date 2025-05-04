@@ -1,7 +1,6 @@
 :root {
-	--primary: hsl(200deg 50% 30%);
-	--primary: hsl(190, 100%, 23%);
-	--yellow: hsl(39, 100%, 47%);
+	--primary: hsl(190, 100%, 25%);
+	--blue: hsl(190, 100%, 36%);
 	--green: hsl(100deg, 100%, 35%);
 	--red: hsl(0deg, 90%, 48%);
 	--secondary: hsl(0deg 0% 30%);
@@ -85,4 +84,17 @@ progress:focus:not(:focus-visible) {
 	clip: rect(0, 0, 0, 0);
 	border: 0;
 	white-space: nowrap;
+}
+
+.btn {
+	padding: 0.6em 1.2em;
+	border-radius: 0.4em;
+	outline: none;
+
+	font-weight: 500;
+	text-transform: uppercase;
+	will-change: color, background-color;
+	transition: color 250ms ease, background-color 250ms ease;
+
+	cursor: pointer;
 }
